@@ -2,6 +2,7 @@ package com.soundcloud.android.crop;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+
 import android.app.Fragment;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -111,6 +112,28 @@ public class Crop {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void start(Context context, Fragment fragment) {
         start(context, fragment, REQUEST_CROP);
+    }
+
+
+    /**
+     * Send the crop Intent with a custom requestCode
+     *
+     * @param context Context
+     * @param fragment Fragment Compat to receive result
+     */
+    public void start(Context context, android.support.v4.app.Fragment fragment) {
+        start(context, fragment, REQUEST_CROP);
+    }
+
+    /**
+     * Send the crop Intent with a custom requestCode
+     *
+     * @param context Context
+     * @param fragment Fragment Compat to receive result
+     * @param requestCode requestCode for result
+     */
+    public void start(Context context, android.support.v4.app.Fragment fragment, int requestCode) {
+        fragment.startActivityForResult(getIntent(context), requestCode);
     }
 
     /**
